@@ -1,51 +1,36 @@
 <img src="cover.png" width="200" align="right" />
 
-# JavaScript Everywhere API
+# Разработка на JS (JavaScript Everywhere API)
 
-This repository contains code examples for the API chapters of [_JavaScript Everywhere_](https://www.jseverywhere.io/) by Adam D. Scott, published by O'Reilly Media
+Этот репозиторий содержит примеры кода для глав, посвященных созданию API.  
+[_JavaScript Everywhere_](https://www.jseverywhere.io/) by Adam D. Scott, published by O'Reilly Media
 
-## Getting Help
+## Поддержка
 
-The best place to get help is our Spectrum channel, [spectrum.chat/jseverywhere](https://spectrum.chat/jseverywhere).
+Лучшее место для получения помощи - Spectrum channel, [spectrum.chat/jseverywhere](https://spectrum.chat/jseverywhere).
 
-## Directory Structure
+## Структура проекта
 
-- `/src` If you are following along with the book, this is the directory where you should perform your development.
-- `/solutions` This directory contains the solutions for each chapter. If you get stuck, these are available for you to consult.
-- `/final` This directory contains the final working project
+- `/src` Если вы следуете за примерами в книге, эта дирректория для написания проекта.
+- `/solutions` Эта дирректория для примеров кода к каждой главе. Если у вас трудности ипользуйте ее для решения проблеммы.
+- `/final` Дирректория содержит финальный проект.
 
-## To Use the Final Project Files
+## Для использования уже готового проекта
 
-If you're developing a UI and would like to use the completed project, copy the files to the completed files to the `src` as follows: 
+Если вы разрабатываете UI и желаете использовать уже готовый проект, скопируйте файлы, как показано ниже:
 
 ```
 cp -rf ./final/* ./src/
 ```
 
-## Seed Data
+## Исходные данные
 
-To seed data for local development: `npm run seed`. The password for all of the seeded users is `password`.
+Внести исходные данные для локальной разработки: `npm run seed`. Пароль для всех внесенных пользователей - `password`.
 
-Each time this command is run, it will generate 10 users and 25 notes.
+Про каждом запуске команды генерируются 10 пользователей и 25 записей.
 
-## Related Repositories
+## Связанные репозитории
 
 - [Web 💻 ](https://github.com/javascripteverywhere/web)
 - [Mobile 🤳](https://github.com/javascripteverywhere/mobile)
 - [Desktop 🖥️](https://github.com/javascripteverywhere/desktop)
-
-## Code of Conduct
-
-In the interest of fostering an open and welcoming environment, I pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation..
-
-This project pledges to follow the [Contributor's Covenant](http://contributor-covenant.org/version/1/4/).
-
-## License
-
-Copyright 2019 Adam D. Scott
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
