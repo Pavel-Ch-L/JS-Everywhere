@@ -30,4 +30,10 @@
 
 ## 3. Создание веб-приложения с помощю Node и Express
 
-    •
+    • Сценарии package.json
+    		"scripts": {
+    			...
+    			"dev": "nodemon src/index.js"
+    			...
+    		}
+
