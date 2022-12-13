@@ -71,4 +71,22 @@
             может включать, к примеру, данные о текущем пользователе или содержимое БД;
         - info - информация о самом запросе.
     • https://www.apollographql.com/docs/
+
+## 5. Базы данных
+
+    • MongoDB команды:
+        - show databases
+        - use learning
+        - show collections
+        - db.dropDatabase()
+        - db.pizza.drop()
+        - db.pizza.insertOne({type: "Cheese"})
+        - db.pizza.insertMany ( [{},{}] )
+        - db.pizza.deleteMany({})
+        - db.pizza.find()
+        - db.pizza.find({type: "cheese})
+        - db.pizza.remove({type: "Mashroom"})
+        - db.version()
+
+    • Коллекции группируют схожие документы вместе.
     •
