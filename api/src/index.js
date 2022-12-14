@@ -1,7 +1,13 @@
+require('dotenv').config();
+const db = require('./db');
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const app = express();
 const port = process.env.PORT || 4000;
+const DB_HOST = process.env.DB_HOST;
+console.log(process.env.DB_HOST);
+// Подключаем БД
+db.connect(DB_HOST);
 
 let notes = [
   {
