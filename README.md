@@ -90,4 +90,8 @@
 
     • Коллекции группируют схожие документы вместе.
     • Mongoose - библиотека, которая сокращает рутинный код посредством моделирования на основе схем.
+    • require('dotenv').config({ path: __dirname + '/.env' });
+    • new Schema({ name: String }, { timestamps: true }) // Mongoose добавит два свойства type Date в вашу схему:
+        - createdAt
+        - updatedAt
     •

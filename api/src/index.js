@@ -1,11 +1,13 @@
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/.env' });
 const db = require('./db');
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
+const models = require('./models');
+
 const app = express();
 const port = process.env.PORT || 4000;
 const DB_HOST = process.env.DB_HOST;
-console.log(process.env.DB_HOST);
+
 // Подключаем БД
 db.connect(DB_HOST);
 
@@ -48,20 +50,19 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     hello: () => 'Hellow World!',
-    notes: () => notes,
-    note: (parent, args) => {
-      return notes.find(note => note.id === args.id);
+    notes: async () => {
+      return await models.Note.find();
+    },
+    note: async (parent, args) => {
+      return await models.Note.findById(args.id);
     }
   },
   Mutation: {
-    newNote: (parent, args) => {
-      let noteValue = {
-        id: String(notes.length + 1),
+    newNote: async (parent, args) => {
+      return await models.Note.create({
         content: args.content,
         author: 'Adam Scott'
-      };
-      notes.push(noteValue);
-      return noteValue;
+      });
     }
   }
 };
