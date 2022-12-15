@@ -94,4 +94,3 @@
     • new Schema({ name: String }, { timestamps: true }) // Mongoose добавит два свойства type Date в вашу схему:
         - createdAt
         - updatedAt
-    •
