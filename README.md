@@ -82,10 +82,9 @@
         - db.pizza.drop()
         - db.pizza.insertOne({type: "Cheese"})
         - db.pizza.insertMany ( [{},{}] )
-        - db.pizza.deleteMany({})
-        - db.pizza.find()
+        - db.pizza.deleteMany({}, {})
+        - db.pizza.deleteOne({type: "Cheese"})
         - db.pizza.find({type: "cheese})
-        - db.pizza.remove({type: "Mashroom"})
         - db.version()
 
     • Коллекции группируют схожие документы вместе.
