@@ -90,6 +90,15 @@
     • Коллекции группируют схожие документы вместе.
     • Mongoose - библиотека, которая сокращает рутинный код посредством моделирования на основе схем.
     • require('dotenv').config({ path: __dirname + '/.env' });
-    • new Schema({ name: String }, { timestamps: true }) // Mongoose добавит два свойства type Date в вашу схему:
-        - createdAt
-        - updatedAt
+    • new Schema({ name: String }, { timestamps: true }) // Mongoose добавит два свойства type Date
+        в вашу схему:
+            - createdAt
+            - updatedAt
+
+## 6. Операции CRUD
+
+    • context - принцип Appolo Server позволяющий при каждом запросе передавать информацию из
+        кода сервера в отдельный распознаватель.
+    • $set - новое содержимое.
+    • new: true - БД возвращает обновленную заметку.
+    • Scalar type
