@@ -27,7 +27,7 @@ module.exports = gql`
     newNote(content: String!): Note!
     updateNote(id: ID!, content: String!): Note!
     deleteNote(id: ID!): Boolean!
-    signUp(username: Sring!, email: String!, password: String!): String!
-    signIn(username: Sring, email: String, password: String!): String!
+    signUp(username: String!, email: String!, password: String!): String!
+    signIn(username: String, email: String, password: String!): String!
   }
 `;
