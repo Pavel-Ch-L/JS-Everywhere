@@ -1,4 +1,3 @@
-// Запросим библиотеку mongoose
 const mongoose = require('mongoose');
 
 // Определяем схему БД
