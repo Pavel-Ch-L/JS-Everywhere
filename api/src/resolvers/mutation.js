@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {
@@ -9,13 +10,25 @@ const gravatar = require('../util/gravatar');
 
 //  Предоставим функцию распознаватель для полей схемы
 module.exports = {
-  newNote: async (parent, args, { models }) => {
+  newNote: async (parent, args, { models, user }) => {
+    if (!user) {
+      throw new AuthenticationError('You must be signed in to create a note');
+    }
     return await models.Note.create({
       content: args.content,
-      author: 'Adam Scott'
+      author: mongoose.Types.ObjectId(user.id)
     });
   },
-  updateNote: async (parent, { content, id }, { models }) => {
+  updateNote: async (parent, { content, id }, { models, user }) => {
+    if (!user) {
+      throw new AuthenticationError('You must be signed in to delete a note');
+    }
+    const note = await models.Note.findById(id);
+    if (note && String(note.author) !== user.id) {
+      // Если владелец заметки и текущий пользователь не совпадают,
+      // выбрасываем запрет на действие
+      throw new ForbiddenError("You dom't have permission to update the note");
+    }
     return await models.Note.findOneAndUpdate(
       {
         _id: id
@@ -30,9 +43,19 @@ module.exports = {
       }
     );
   },
-  deleteNote: async (parent, { id }, { models }) => {
+  deleteNote: async (parent, { id }, { models, user }) => {
+    if (!user) {
+      throw new AuthenticationError('You must be signed in to delete a note');
+    }
+    const note = await models.Note.findById(id);
+    if (note && String(note.author) !== user.id) {
+      // Если владелец заметки и текущий пользователь не совпадают,
+      // выбрасываем запрет на действие
+      throw new ForbiddenError("You dom't have permission to delete the note");
+    }
     try {
-      await models.Note.findOneAndRemove({ _id: id });
+      //await models.Note.findOneAndRemove({ _id: id });
+      await note.remove();
       return true;
     } catch (err) {
       return false;
