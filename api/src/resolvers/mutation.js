@@ -99,5 +99,50 @@ module.exports = {
       throw new AuthenticationError('Error sign in');
     }
     return jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+  },
+  toggleFavorite: async (parent, { id }, { models, user }) => {
+    // Если контекст пользователя не передан, выбрасываем ошибку
+    if (!user) {
+      throw new AuthenticationError();
+    }
+    // Проверяем, отмечал-ли пользователь заметку как избранную
+    let noteCheck = await models.Note.findById(id);
+    const hasUser = noteCheck.favoritedBy.indexOf(user.id);
+
+    // Если пользователь есть в списке, удаляем его оттуда и
+    // уменьшаем значение favoritуCount на 1
+    if (hasUser >= 0) {
+      return await models.Note.findByIdAndUpdate(
+        id,
+        {
+          $pull: {
+            favoritedBy: mongoose.Types.ObjectId(user.id)
+          },
+          $inc: {
+            favoriteCount: -1
+          }
+        },
+        {
+          new: true
+        }
+      );
+    } else {
+      // Если пользователя в списке нет, добавляем его туда
+      // и увеличиваем значение favoriteCount на 1
+      return await models.Note.findByIdAndUpdate(
+        id,
+        {
+          $push: {
+            favoritedBy: mongoose.Types.ObjectId(user.id)
+          },
+          $inc: {
+            favoriteCount: 1
+          }
+        },
+        {
+          new: true
+        }
+      );
+    }
   }
 };
