@@ -126,6 +126,8 @@
     • models.User.findOne( {username} )
     • models.User.findById(user.id)
     • models.user.find()
+    • models.Note.find(_id: {$it: cursor}) // < чем
+    • models.Note.find().limit(100) // Ограничить количество
     • note.remove()
     • models.User.find({_id: {$in: note.favoritedBy}}) // Фильтр []
     • models.Note.find({author: user._id}).sort({_id: -1}) // Найти и сортировтаь в обратном порядке
@@ -133,4 +135,20 @@
     • $gte:{} // >=
     • $pull:{ favoritedBy: mongoose.Types.Objectd(user.id) } // Удалить все экземпляры значений из []
     • $inc:{favoritCount: -1} // Инкремент
-    • $push: {favoritedBy: mongoose.Types.ObjectId(user.id)} // Позволяет добавить еще одно значение к уже существующему
+    • $push: {favoritedBy: mongoose.Types.ObjectId(user.id)} // Позволяет добавить еще одно значение
+        к уже существующему
+
+## 9. Детали
+
+    • Helmet // Коллекция функций (корректировка HTTP заголовков) для обеспечения безопсности.
+        app.use(helmet())
+    • Corse // Средство позволяющее выполнить запрос из другого домена.
+    • Существуют два типа пагинации:
+        - offset-пагинация - клиент передает значение смещения и возвращает ограниченное
+            количество данных;
+        - курсорная пагинация - в качестве стартовой точки передается временный курсор или
+            уникальный идентификатор. Затем запрашивается конкретное количетво данных,
+            следующих за этой записью.
+    • graphql-depth-limit - ограничение запросов по глубине
+    • graphql-validation-complexity - ограничение запросов по сложности.
+    • MVP (minimum viable product) - минимально жизнеспособный продукт.

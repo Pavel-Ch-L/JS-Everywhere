@@ -1,4 +1,6 @@
 require('dotenv').config({ path: __dirname + '/.env' });
+const helmet = require('helmet');
+const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const db = require('./db');
 const express = require('express');
@@ -7,6 +9,8 @@ const resolvers = require('./resolvers');
 const models = require('./models');
 
 const app = express();
+app.use(helmet());
+app.use(cors());
 const port = process.env.PORT || 4000;
 const typeDefs = require('./schema');
 const DB_HOST = process.env.DB_HOST;
