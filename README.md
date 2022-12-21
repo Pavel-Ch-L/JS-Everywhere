@@ -86,6 +86,7 @@
         - db.pizza.deleteOne({type: "Cheese"})
         - db.pizza.find({type: "cheese})
         - db.version()
+        - db.notes.find( {_id:ObjectId("A document ID here)} )
 
     • Коллекции группируют схожие документы вместе.
     • Mongoose - библиотека, которая сокращает рутинный код посредством моделирования на основе схем.
@@ -119,4 +120,17 @@
 
 ## 8. Действия пользователя
 
-    •
+    • throw new AuthenticationError()
+    • throw new ForbiddenError()
+    • mongoose.Types.ObjectId(user.id)
+    • models.User.findOne( {username} )
+    • models.User.findById(user.id)
+    • models.user.find()
+    • note.remove()
+    • models.User.find({_id: {$in: note.favoritedBy}}) // Фильтр []
+    • models.Note.find({author: user._id}).sort({_id: -1}) // Найти и сортировтаь в обратном порядке
+    • $set:{} // Создать или заменить
+    • $gte:{} // >=
+    • $pull:{ favoritedBy: mongoose.Types.Objectd(user.id) } // Удалить все экземпляры значений из []
+    • $inc:{favoritCount: -1} // Инкремент
+    • $push: {favoritedBy: mongoose.Types.ObjectId(user.id)} // Позволяет добавить еще одно значение к уже существующему
