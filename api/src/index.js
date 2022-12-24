@@ -8,6 +8,8 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const resolvers = require('./resolvers');
 const models = require('./models');
+const depthLimit = require('graphql-depth-limit');
+const { createComplexityLimitRule } = require('graphql-validation-complexity');
 
 const app = express();
 app.use(helmet());
@@ -33,11 +35,12 @@ const getUser = token => {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req }) => {
+  validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
+  context: async ({ req }) => {
     // Получаем токен пользователя из заголовка
     const token = req.headers.authorization;
     // Пытаемся извлеч пользователя с помощю токена
-    const user = getUser(token);
+    const user = await getUser(token);
     // Вывод информации о пользователе в консоль
     console.log(user);
     // Добавление моделей БД и информации о пользователе в контекст
