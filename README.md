@@ -120,8 +120,10 @@
 
 ## 8. Действия пользователя
 
-    • throw new AuthenticationError()
-    • throw new ForbiddenError()
+    • throw new AuthenticationError() // Cервер не смог выполнить аутентификацию
+        в запрашиваемом источнике данных
+    • throw new ForbiddenError() // Cервер не имел полномочий на доступ
+        к запрашиваемому источнику данных
     • mongoose.Types.ObjectId(user.id)
     • models.User.findOne( {username} )
     • models.User.findById(user.id)
