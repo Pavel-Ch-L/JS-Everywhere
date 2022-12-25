@@ -154,3 +154,18 @@
     • graphql-depth-limit - ограничение запросов по глубине
     • graphql-validation-complexity - ограничение запросов по сложности.
     • MVP (minimum viable product) - минимально жизнеспособный продукт.
+
+## 10. Развертывание
+
+    • Application ServerAPI running on : https://shy-tan-eagle-coat.cyclic.app/api
+    • "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+            eyJpZCI6IjYzYTMyZjQ4YWExMTg5YWU3YmZjMWY4OCIsImlhdCI6MTY3MTYzODg1Nn0.
+            RkacHcljCWnf7u3zKNGqmiYiPzg7g3OmKjRTsHC0YK0"
+
+<pre>
+        curl \
+    > -X POST \
+    > -H "Content-Type:application/json" \
+    > --data '{"query":"{notes{id}}"}' \
+    > https://shy-tan-eagle-coat.cyclic.app/api
+</pre>
