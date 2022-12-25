@@ -1,5 +1,4 @@
-# Разработка на JavaScript. &emsp; Автор: Адам Д. Скотт
-
+<H1 align="center">Разработка на JavaScript. &emsp; Автор: Адам Д. Скотт</H1>
 <br>  
 <br>
-<img style="width:30%; margin: 0 auto; display:block" src="./api/cover.png" width="200" />
+<p align="center"><img src="./api/cover.png" width="200" /></p>
