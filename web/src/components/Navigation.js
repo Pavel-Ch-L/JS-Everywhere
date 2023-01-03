@@ -24,8 +24,8 @@ const NavList = styled.ul`
   list-style: none;
   line-height: 2;
 
-  /* We can nest styles in styled-components */
-  /* The following styles will apply to links within the NavList component */
+  /* Мы можем вложить стили в styled-components */
+  /* Следующие стили будут применены к ссылкам в компаненте NavList */
   a {
     text-decoration: none;
     font-weight: bold;
