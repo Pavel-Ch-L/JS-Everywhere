@@ -7,7 +7,6 @@ const MyNotes = () => {
   });
   return (
     <div>
-      <h1>Notedly</h1>
       <p>This is my notes</p>
     </div>
   );

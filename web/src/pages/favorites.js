@@ -7,7 +7,6 @@ const Favorites = () => {
   });
   return (
     <div>
-      <h1>Notedly</h1>
       <p>This are my favorites</p>
     </div>
   );
