@@ -4,7 +4,7 @@ const models = require('../../models');
 const seedUsers = require('./users');
 const seedNotes = require('./notes');
 const db = require('../../db');
-require('dotenv').config({ path: __dirname + '/../../.env' });
+require('dotenv').config({ path: __dirname + '/../../../.env' });
 
 const DB_HOST = process.env.DB_HOST;
 
