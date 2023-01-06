@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 // Импорт библиотеки useQuery и синтаксис gql
 import { useQuery, gql } from '@apollo/client';
 import NoteFeed from '../components/NoteFeed';
+import Button from '../../solutions/03-GraphQL-Query/components/Button';
 
 // GraaphQL запрос хранящийся в переменной
 const GET_NOTES = gql`
@@ -38,9 +39,42 @@ const Home = () => {
     return <p>Error!</p>;
   }
 
-  // Если получение даннып рошло успешно, отображаем их в UI
+  // Если получение данных прошло успешно, отображаем их в UI
   // React требует присвоение каждому результату уникального ключа
-  return <NoteFeed notes={data.noteFeed.notes} />;
+  return (
+    <React.Fragment>
+      <NoteFeed notes={data.noteFeed.notes} />
+      {/* Показывать кнопку подгрузки если hasNextPage = true */}
+      {data.noteFeed.hasNextPage && (
+        // onClick выполняет запрос, передавая в качестве переменной текущий курсор
+        <Button
+          onClick={() =>
+            fetchMore({
+              variables: {
+                cursor: data.noteFeed.cursor
+              },
+              updateQuery: (previousResult, { fetchMoreResult }) => {
+                return {
+                  noteFeed: {
+                    cursor: fetchMoreResult.noteFeed.cursor,
+                    hasNextPage: fetchMoreResult.noteFeed.hasNextPage,
+                    // Совмещаем новые результаты со старыми
+                    notes: [
+                      ...previousResult.noteFeed.notes,
+                      ...fetchMoreResult.noteFeed.notes
+                    ],
+                    _typename: 'notefeed'
+                  }
+                };
+              }
+            })
+          }
+        >
+          Load more
+        </Button>
+      )}
+    </React.Fragment>
+  );
 };
 
 //#region Предыдущие версии
