@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 // Импорт библиотеки useQuery и синтаксис gql
 import { useQuery, gql } from '@apollo/client';
-import ReactMarkdown from 'react-markdown';
+import NoteFeed from '../components/NoteFeed';
 
 // GraaphQL запрос хранящийся в переменной
 const GET_NOTES = gql`
@@ -40,25 +40,15 @@ const Home = () => {
 
   // Если получение даннып рошло успешно, отображаем их в UI
   // React требует присвоение каждому результату уникального ключа
-  return (
-    <div>
-      {data.noteFeed.notes.map(note => (
-        <article key={note.id}>
-          <img
-            src={note.author.avatar}
-            alt={`${note.author.username} avatar`}
-            height="50px"
-          />{' '}
-          {note.author.username} {note.createdAt} {note.favoriteCount}{' '}
-          <ReactMarkdown source={note.content} />
-        </article>
-      ))}
-    </div>
-  );
+  return <NoteFeed notes={data.noteFeed.notes} />;
 };
 
-/* import Button from '../components/Button'; */
-/* 
+//#region Предыдущие версии
+
+/* стр 143
+
+  import Button from '../components/Button'; 
+
   useEffect(() => {
     // Обновляем заголовок документа
     document.title = 'Notedly';
@@ -69,7 +59,28 @@ const Home = () => {
       <Button>Click me</Button>
     </div>
   );
-};
- */
+
+*/
+
+/* стр 159
+
+  import ReactMarkdown from 'react-markdown';
+
+  <div>
+    {data.noteFeed.notes.map(note => (
+      <article key={note.id}>
+        <img
+          src={note.author.avatar}
+          alt={`${note.author.username} avatar`}
+          height="50px"
+        />{' '}
+        {note.author.username} {note.createdAt} {note.favoriteCount}{' '}
+        <ReactMarkdown source={note.content} />
+      </article>
+    ))}
+  </div>
+*/
+
+//#endregion
 
 export default Home;
