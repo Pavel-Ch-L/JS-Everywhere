@@ -42,11 +42,23 @@ const SignUp = props => {
     document.title = 'Sign Up - Notedly';
   });
 
+  // ApolloClient
+  const client = useApolloClient();
+
   // Добавить хук мутации
   const [signUp, { loading, error }] = useMutation(SIGNUP_USER, {
     onCompleted: data => {
       // Когда мутация завершена, вывести в консоль webToken
-      console.log(data.signUp);
+      //console.log(data.signUp);
+
+      // Сохраняем JWT в localStorage
+      localStorage.setItem('token', data.signUp);
+
+      // Обновляем локальный кэш
+      client.writeData({ data: { isLoggedIn: true } });
+
+      // Перенаправление пользователя на домашнюю страницу
+      props.history.push('/');
     }
   });
 
