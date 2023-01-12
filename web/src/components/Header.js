@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import logo from '../img/logo.svg';
 import { useQuery, gql } from '@apollo/client';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import ButtonAsLink from './ButtonAsLink';
 
 const HeaderBar = styled.header`
   width: 100%;
@@ -33,8 +34,9 @@ const UserState = styled.div`
 `;
 
 const Header = props => {
-  // Хук запроса для проверки состояния авторизации пользователя
-  const { data } = useQuery(IS_LOGGED_IN);
+  // Хук запроса для проверки состояния авторизации пользователя,
+  // включая клиент для обращения к хранилищу Apollo
+  const { data, client } = useQuery(IS_LOGGED_IN);
   return (
     <HeaderBar>
       <img src={logo} alt="Notedly Logo" height="40" />
@@ -43,7 +45,20 @@ const Header = props => {
         отображаем варианты sign in и sign up */}
       <UserState>
         {data.isLoggedIn ? (
-          <p>Log Out</p>
+          <ButtonAsLink
+            onClick={() => {
+              // Удаляем токен
+              localStorage.removeItem('token');
+              // Очищаем кэш приложения
+              client.resetStore();
+              // Обновляем локальное состояние
+              client.writeData({ data: { isLoggedIn: false } });
+              // Перенапраляем пользователя на локальную страницу
+              props.history.push('/');
+            }}
+          >
+            Logout
+          </ButtonAsLink>
         ) : (
           <p>
             <Link to={'/signin'}>Sign In</Link> or{' '}
@@ -55,4 +70,4 @@ const Header = props => {
   );
 };
 
-export default Header;
+export default withRouter(Header);

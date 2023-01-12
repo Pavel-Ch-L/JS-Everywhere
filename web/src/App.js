@@ -51,6 +51,9 @@ cache.writeData({ data });
 // Теперь можно обращаться isLoggedIn в виде GraphQL запроса
 // в любом месте приложения
 
+// Записываем данные кэша после его сброса
+client.onResetStore(() => cache.writeData({ data }));
+
 const App = () => (
   <ApolloProvider client={client}>
     <GlobalStyle />
