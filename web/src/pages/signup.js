@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useApolloClient, gql } from '@apollo/client';
-import styled from 'styled-components';
-import Button from '../components/Button';
 import UserForm from '../components/UserForm';
 
-/* const Wrapper = styled.div`
+/* Версия до создания общего компанента формы 'UserForm'
+const Wrapper = styled.div`
   border: 1px solid #f5f4f0;
   max-width: 500px;
   padding: 1em;
@@ -18,7 +17,8 @@ const Form = styled.form`
     line-height: 2em;
     width: 100%;
     margin-bottom: 1em;
-`; */
+`; 
+*/
 
 const SIGNUP_USER = gql`
   mutation signUp($email: String!, $username: String!, $password: String!) {
@@ -27,7 +27,7 @@ const SIGNUP_USER = gql`
 `;
 
 const SignUp = props => {
-  /* 
+  /* Версия до создания общего компанента формы 'UserForm'
   // Установить состояние формы по умолчанию
   const [values, setValues] = useState();
 
@@ -39,6 +39,7 @@ const SignUp = props => {
     });
   };
  */
+
   useEffect(() => {
     // Обновить заголовок документа
     document.title = 'Sign Up - Notedly';
@@ -75,6 +76,7 @@ const SignUp = props => {
   );
 };
 
+//#region **** Версия до создания общего компанента формы 'UserForm' ***
 /* 
 return (
     <Wrapper>
@@ -121,5 +123,6 @@ return (
     </Wrapper>
   );
 */
+//#endregion
 
 export default SignUp;

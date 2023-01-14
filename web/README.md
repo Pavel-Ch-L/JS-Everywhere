@@ -123,6 +123,13 @@ npm run final
         const client = useApolloClient();
         // Обновляем локальный кэш
         client.writeData({ data: { isLoggedIn: true } });
+        // Локальный запрос c помощю директивы @client
+        const IS_Logged_In = gql` { isLoggedIn @client} `;
 
     • Когда нужно добавить маршрутизацию в компанент, который не може выступать в роли маршрута,
         необходимо использовать компанент высшего порядка withRouter маршрутизатора React.
+    • Сервисы авторизации:
+        - OAuth
+        - AuthO
+        - Okta
+        - Firebase
