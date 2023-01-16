@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import NoteForm from '../components/NoteForm';
 
@@ -6,6 +6,11 @@ import { GET_NOTE, GET_ME } from '../gql/query';
 // import { EDIT_NOTE } from '../gql/mutation';
 
 const EditNote = props => {
+  useEffect(() => {
+    // Обновляем заголовок документа
+    document.title = 'Edit - Notedly';
+  });
+
   // Сохраняем id из url в виде переменной
   const id = props.match.params.id;
 
