@@ -3,7 +3,7 @@ import { useQuery, useMutation, gql } from '@apollo/client';
 import NoteForm from '../components/NoteForm';
 
 import { GET_NOTE, GET_ME } from '../gql/query';
-// import { EDIT_NOTE } from '../gql/mutation';
+import { EDIT_NOTE } from '../gql/mutation';
 
 const EditNote = props => {
   useEffect(() => {
@@ -21,6 +21,15 @@ const EditNote = props => {
 
   // Получить информацию о текущем пользователе
   const { data: userdata } = useQuery(GET_ME);
+  // Определяем мутацию
+  const [editNote] = useMutation(EDIT_NOTE, {
+    variables: {
+      id
+    },
+    onCompleted: () => {
+      props.history.push(`/note/${id}`);
+    }
+  });
 
   // Если данные загружаются, отображаем сообщение о загрузке
   if (loading) return <p>Loading...</p>;
@@ -29,12 +38,12 @@ const EditNote = props => {
 
   // Если текущий пользователь не соответствует автору заметки,
   // вернуть соответствующее сообщение
-  if (userdata.me.id !== data.note.author.id) {
+  if ((userdata && userdata.me.id) !== (data && data.note.author.id)) {
     return <p>You do not access to edit this note</p>;
   }
 
   // Передаем данные в компанент формы
-  return <NoteForm content={data.note.content} />;
+  return <NoteForm content={data.note.content} action={editNote} />;
 };
 
 export default EditNote;
