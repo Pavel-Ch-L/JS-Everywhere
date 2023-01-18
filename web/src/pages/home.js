@@ -1,29 +1,9 @@
 import React, { useEffect } from 'react';
 // Импорт библиотеки useQuery и синтаксис gql
 import { useQuery, gql } from '@apollo/client';
+import { GET_NOTES } from '../gql/query';
 import NoteFeed from '../components/NoteFeed';
 import Button from '../../solutions/03-GraphQL-Query/components/Button';
-
-// GraaphQL запрос хранящийся в переменной
-const GET_NOTES = gql`
-  query noteFeed($cursor: String) {
-    noteFeed(cursor: $cursor) {
-      cursor
-      hasNextPage
-      notes {
-        id
-        createdAt
-        content
-        favoriteCount
-        author {
-          username
-          id
-          avatar
-        }
-      }
-    }
-  }
-`;
 
 const Home = () => {
   // Хук запроса
