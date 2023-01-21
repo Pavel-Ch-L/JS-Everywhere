@@ -6,6 +6,11 @@ import NoteFeed from '../components/NoteFeed';
 import Button from '../../solutions/03-GraphQL-Query/components/Button';
 
 const Home = () => {
+  useEffect(() => {
+    // Обновляем заголовок документа
+    document.title = 'Home - Notedly';
+  });
+
   // Хук запроса
   const { data, loading, error, fetchMore } = useQuery(GET_NOTES);
 
