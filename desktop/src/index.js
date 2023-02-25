@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const config = require('./config.js');
-const { is } = require('electron-util');
+const { is, setContentSecurityPolicy } = require('electron-util');
 
 let window;
 
@@ -27,6 +27,21 @@ function createWindow() {
   // Если в режиме dev показать devtools
   if (is.development) {
     window.webContents.openDevTools();
+  }
+
+  // Устанавливаем CSP в prod режиме
+  if (!is.development) {
+    setContentSecurityPolicy(`
+    default-src 'none';
+    connect-src 'self' ${config.PRODUCTION_API_URL};
+    img-src 'self' https://www.gravatar.com;
+    script-src 'self';
+    style-src 'self' 'unsafe-inline';
+    font-src 'self';
+    base-uri 'none';
+    form-action 'none';
+    frame-ancestors 'none';
+  `);
   }
 
   // При закрытии окна сбрасываем объект

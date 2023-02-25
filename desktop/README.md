@@ -2,7 +2,7 @@
 
 # Разработка на JS (JavaScript Everywhere Desktop Application)
 
-Этот репозиторий содержит примеры кода для глав, посвященных созданию Electron desktop application. 
+Этот репозиторий содержит примеры кода для глав, посвященных созданию Electron desktop application.
 [_JavaScript Everywhere_](https://www.jseverywhere.io/) by Adam D. Scott, published by O'Reilly Media
 
 ## Поддержка
@@ -49,3 +49,6 @@ npm run final
     • Electron - фреймворк, предназначенный для создания кроссплатформенных дектопных приложений с
         помощю веб-технологий.
         Работает он на основе Node и движка Chromium.
+    • CSP - content security policy позволяет указывать домены, с которых приложению разрешено
+        загружать ресурсы.
+    • Electron Builder - библиотека для упаковки, сборки, дистрибуции приложения.
