@@ -46,4 +46,6 @@ npm start
       - React Native Elements.
     • Свойство style позволяет применять стили к любому JSX-элементу приложения
         т.ж. используют React Native StyleSheet, Styled Components, Emotion.
-    •
+    • createBottomTabNavigator - навигация по вкладкам.
+    • createStackNavigator - навигация по стеку.
+    • https://icons.expo.fyi/ - иконки expo.
