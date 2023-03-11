@@ -40,5 +40,10 @@ npm start
 
 ## 21. Мобильные приложения на React Native
 
-    • Приложение состоит из компанентов React JSX но без DOM.
+    • Приложение состоит из компонентов React JSX но без DOM.
+    • Библиотеки UI компанентов:
+      - NativeBase;
+      - React Native Elements.
+    • Свойство style позволяет применять стили к любому JSX-элементу приложения
+        т.ж. используют React Native StyleSheet, Styled Components, Emotion.
     •
