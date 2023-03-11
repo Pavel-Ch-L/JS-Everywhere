@@ -1,4 +1,5 @@
 import React from 'react';
+import Screens from './screens';
 // import { Text, View, Image, StyleSheet } from 'react-native';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
@@ -46,7 +47,7 @@ const Main = () => {
   ); 
   */
 
-  /* Исполльзуем иблиотеку React Native  для стилизации компонентов
+  /* Используем иблиотеку React Native  для стилизации компонентов
   return (
     <View style={styles.container}>
       <Text style={styles.h1}>Hello world!</Text>
@@ -56,6 +57,7 @@ const Main = () => {
   ); 
   */
 
+  /* 
   return (
     <StyledView>
       <H1>Hellow world!</H1>
@@ -63,6 +65,9 @@ const Main = () => {
       <Image source={require('../assets/images/hello-world.jpg')} />
     </StyledView>
   );
+  */
+
+  return <Screens />;
 };
 
 export default Main;
